@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+  wordpress:
+    image: wordpress
+    ports:
+      - "8080:80"
+    networks:
+      - overlay
+    # 部署
+    deploy:
+      mode: replicated
+      # 复制集数量
+      replicas: 2
+      # 虚拟ip 模式
+      endpoint_mode: vip
+
+  mysql:
+    image: mysql
+    volumes:
+      - db-data:/var/lib/mysql/data
+    networks:
+      - overlay
+    deploy:
+      mode: replicated
+      replicas: 2
+      # dns 模式 : -p,--port 无效
+      endpoint_mode: dnsrr
+
+volumes:
+  db-data:
+
+networks:
+  overlay:
