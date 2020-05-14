@@ -314,7 +314,7 @@ VALUES
     ('consumer.token.salt', 'someSalt', 'consumer token salt'),
     ('admin.createPrivateNamespace.switch', 'true', '是否允许项目管理员创建私有namespace'),
     ('configView.memberOnly.envs', 'dev,prod,test', '只对项目成员显示配置信息的环境列表，多个env以英文逗号分隔'),
-    ('apollo.portal.meta.servers', '{}', '各环境Meta Service列表');
+    ('apollo.portal.meta.servers', '{\"dev.meta\":\"http://localhost:8080\",\"prod.meta\":\"http://localhost:8080\",\"test.meta\":\"http://localhost:8080\"}', '各环境Meta Service列表');
 
 INSERT INTO `Users` (`Username`, `Password`, `Email`, `Enabled`)
 VALUES
