@@ -24,6 +24,8 @@ CMD mysql & sshd & npm start
 
 ## docker compose
 
+[官方文档](https://docs.docker.com/compose/compose-file/)
+
 使用 ``docker-composer.yml`` 文件开发部署所用  
 
 docker-compose.yml文件分为三个主要部分：
