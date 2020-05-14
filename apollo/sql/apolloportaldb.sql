@@ -307,13 +307,13 @@ CREATE TABLE `Authorities` (
 # ------------------------------------------------------------
 INSERT INTO `ServerConfig` (`Key`, `Value`, `Comment`)
 VALUES
-    ('apollo.portal.envs', 'dev', '可支持的环境列表'),
-    ('organizations', '[{\"orgId\":\"TEST1\",\"orgName\":\"样例部门1\"},{\"orgId\":\"TEST2\",\"orgName\":\"样例部门2\"}]', '部门列表'),
+    ('apollo.portal.envs', 'dev,prod,test', '可支持的环境列表'),
+    ('organizations', '[{\"orgId\":\"dev1\",\"orgName\":\"开发部门1\"},{\"orgId\":\"test1\",\"orgName\":\"测试部门1\"},{\"orgId\":\"prod1\",\"orgName\":\"生产部署部门1\"}]', '部门列表'),
     ('superAdmin', 'apollo', 'Portal超级管理员'),
     ('api.readTimeout', '10000', 'http接口read timeout'),
     ('consumer.token.salt', 'someSalt', 'consumer token salt'),
     ('admin.createPrivateNamespace.switch', 'true', '是否允许项目管理员创建私有namespace'),
-    ('configView.memberOnly.envs', 'dev', '只对项目成员显示配置信息的环境列表，多个env以英文逗号分隔'),
+    ('configView.memberOnly.envs', 'dev,prod,test', '只对项目成员显示配置信息的环境列表，多个env以英文逗号分隔'),
     ('apollo.portal.meta.servers', '{}', '各环境Meta Service列表');
 
 INSERT INTO `Users` (`Username`, `Password`, `Email`, `Enabled`)
@@ -326,7 +326,7 @@ INSERT INTO `Authorities` (`Username`, `Authority`) VALUES ('apollo', 'ROLE_user
 # ------------------------------------------------------------
 INSERT INTO `App` (`AppId`, `Name`, `OrgId`, `OrgName`, `OwnerName`, `OwnerEmail`)
 VALUES
-	('SampleApp', 'Sample App', 'TEST1', '样例部门1', 'apollo', 'apollo@acme.com');
+	('SampleApp', 'Sample App', 'dev1', '开发部门1', 'apollo', 'apollo@acme.com');
 
 INSERT INTO `AppNamespace` (`Name`, `AppId`, `Format`, `IsPublic`, `Comment`)
 VALUES
