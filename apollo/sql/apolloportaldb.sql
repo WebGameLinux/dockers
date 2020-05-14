@@ -307,14 +307,14 @@ CREATE TABLE `Authorities` (
 # ------------------------------------------------------------
 INSERT INTO `ServerConfig` (`Key`, `Value`, `Comment`)
 VALUES
-    ('apollo.portal.envs', 'dev,prod,test', '可支持的环境列表'),
+    ('apollo.portal.envs', 'DEV,FAT,UAT,PRO', '可支持的环境列表'),
     ('organizations', '[{\"orgId\":\"dev1\",\"orgName\":\"开发部门1\"},{\"orgId\":\"test1\",\"orgName\":\"测试部门1\"},{\"orgId\":\"prod1\",\"orgName\":\"生产部署部门1\"}]', '部门列表'),
     ('superAdmin', 'apollo', 'Portal超级管理员'),
     ('api.readTimeout', '10000', 'http接口read timeout'),
     ('consumer.token.salt', 'someSalt', 'consumer token salt'),
     ('admin.createPrivateNamespace.switch', 'true', '是否允许项目管理员创建私有namespace'),
     ('configView.memberOnly.envs', 'dev,prod,test', '只对项目成员显示配置信息的环境列表，多个env以英文逗号分隔'),
-    ('apollo.portal.meta.servers', '{\"dev.meta\":\"http://localhost:8080\",\"prod.meta\":\"http://localhost:8080\",\"test.meta\":\"http://localhost:8080\"}', '各环境Meta Service列表');
+    ('apollo.portal.meta.servers', '{\"DEV\":\"http://localhost:8080\",\"FAT\":\"http://localhost:8080\",\"UAT\":\"http://localhost:8080\",\"PRO\":\"http://localhost:8080\"}', '各环境Meta Service列表');
 
 INSERT INTO `Users` (`Username`, `Password`, `Email`, `Enabled`)
 VALUES
