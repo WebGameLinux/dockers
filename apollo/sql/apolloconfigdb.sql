@@ -384,7 +384,7 @@ CREATE TABLE `AccessKey` (
 # ------------------------------------------------------------
 INSERT INTO `ServerConfig` (`Key`, `Cluster`, `Value`, `Comment`)
 VALUES
-    ('eureka.service.url', 'default', 'http://localhost:8080/eureka/,http://eureka.word-server.com/', 'Eureka服务Url，多个service以英文逗号分隔'),
+    ('eureka.service.url', 'default', 'http://localhost:8080/eureka/,http://eureka.word-server.cn/', 'Eureka服务Url，多个service以英文逗号分隔'),
     ('namespace.lock.switch', 'default', 'false', '一次发布只能有一个人修改开关'),
     ('item.value.length.limit', 'default', '20000', 'item value最大长度限制'),
     ('config-service.cache.enabled', 'default', 'false', 'ConfigService是否开启缓存，开启后能提高性能，但是会增大内存消耗！'),
