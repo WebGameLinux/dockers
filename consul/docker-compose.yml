@@ -1,0 +1,90 @@
+version: "3"
+# 环境变量
+environment:
+  datacenter: dc1
+  bind-address: 0.0.0.0
+  client: 0.0.0.0
+  image: consul
+# 网络
+networks:
+  net-consul:
+
+services:
+  consul1:
+    image: ${image}
+    environment:
+      node_name: node1
+      args: -bootstrap-expect=3
+    container_name: ${node_name}
+    command: agent -server ${args} -node=${node_name} -bind=${bind-address} -client=${client} -datacenter=${datacenter}
+    ports:
+      # http
+      - 18501:8500
+      # rpc
+      - 18301:8300
+    volumes:
+      - /data/consul/${node_name}:/consul/data
+    restart: on-failure
+    networks:
+      - net-consul
+
+  consul2:
+    image: ${image}
+    environment:
+      node_name: node2
+      args: -retry-join=node1
+    container_name: ${node_name}
+    command: agent -server ${args} -node=${node_name} -bind=${bind-address} -client=${client} -datacenter=${datacenter}
+    ports:
+      # http
+      - 18502:8500
+      # rpc
+      - 18302:8300
+    volumes:
+      - /data/consul/${node_name}:/consul/data
+    restart: on-failure
+    depends_on:
+      - consul1
+    networks:
+      - net-consul
+
+  consul3:
+    image: ${image}
+    environment:
+      node_name: node3
+      args: -retry-join=node1
+    container_name: ${node_name}
+    command: agent -server ${args} -node=${node_name} -bind=${bind-address} -client=${client} -datacenter=${datacenter}
+    ports:
+      # http
+      - 18503:8500
+      # rpc
+      - 18303:8300
+    volumes:
+      - /data/consul/${node_name}:/consul/data
+    restart: on-failure
+    depends_on:
+      - consul1
+    networks:
+      - net-consul
+
+  consul4:
+    image: ${image}
+    environment:
+      node_name: node4
+      args: -retry-join=node1 -ui
+    container_name: ${node_name}
+    command: agent -server ${args} -node=${node_name} -bind=${bind-address} -client=${client} -datacenter=${datacenter}
+    ports:
+      # http
+      - 18500:8500
+      # rpc
+      - 18300:8300
+    volumes:
+      - /data/consul/${node_name}:/consul/data
+    restart: on-failure
+    depends_on:
+      - consul2
+      - consul3
+    networks:
+      - net-consul

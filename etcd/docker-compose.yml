@@ -1,0 +1,57 @@
+version: "3"
+networks:
+  net-etcd:
+environment:
+  advertise-client-urls: http://0.0.0.0:2379
+  listen-client-urls: http://0.0.0.0:2379
+  listen-peer-urls: http://0.0.0.0:2380
+  initial-cluster: "etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380"
+  initial-cluster-token: etcd-cluster
+  initial-cluster-state: new
+  image: quay.io/coreos/etcd
+
+services:
+  etcd1:
+    image: ${image}
+    environment:
+      node_name: etcd1
+    container_name: ${node_name}
+    command: etcd -name ${node_name} -advertise-client-urls ${advertise-client-urls} -listen-client-urls ${listen-client-urls} -listen-peer-urls ${listen-peer-urls} -initial-cluster-token ${initial-cluster-token} -initial-cluster ${initial-cluster} -initial-cluster-state ${initial-cluster-state}
+    ports:
+      - 12379:2379
+      - 12380:2380
+    volumes:
+      - /data/${node_name}:/data
+    restart: on-failure
+    networks:
+      - net-etcd
+
+  etcd2:
+    image: ${image}
+    environment:
+      node_name: etcd2
+    container_name: ${node_name}
+    command: etcd -name ${node_name} -advertise-client-urls ${advertise-client-urls} -listen-client-urls ${listen-client-urls} -listen-peer-urls ${listen-peer-urls} -initial-cluster-token ${initial-cluster-token} -initial-cluster ${initial-cluster} -initial-cluster-state ${initial-cluster-state}
+    ports:
+      - 12378:2379
+      - 12381:2380
+    volumes:
+      - /data/${node_name}:/data
+    restart: on-failure
+    networks:
+      - net-etcd
+
+  etcd3:
+    image: ${image}
+    environment:
+      node_name: etcd3
+    container_name: ${node_name}
+    command: etcd -name ${node_name} -advertise-client-urls ${advertise-client-urls} -listen-client-urls ${listen-client-urls} -listen-peer-urls ${listen-peer-urls} -initial-cluster-token ${initial-cluster-token} -initial-cluster ${initial-cluster} -initial-cluster-state ${initial-cluster-state}
+    ports:
+      - 12377:2379
+      - 12382:2380
+    volumes:
+      - /data/${node_name}:/data
+    restart: on-failure
+    networks:
+      - net-etcd
