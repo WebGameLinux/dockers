@@ -5,7 +5,6 @@ curDir=$(cd `dirname $0`; pwd)
 # 初始化持久化目录
 function initDataDir(){
     if [ ! -e /data/consul/node1 ];then
-        echo 123
         mkdir -p  /data/consul/node1
     fi
     if [ ! -e  /data/consul/node2 ];then
@@ -45,6 +44,11 @@ function reload(){
     docker-compose reload
 }
 
+# 查看
+function info(){
+    docker-compose ps
+}
+
 # 检查 docker-compose 是否已安装
 type docker-compose >/dev/null 2>&1
 if [ "{$?}x" == "1x" ]; then
@@ -78,13 +82,15 @@ function main(){
         ;;
         clean|delete)
             delete
+        ps|info)
+            info
         ;;
         *)
         echo "unknown opt ${opt}"
         echo "script support options : start,stop,reload,clean,delete,restart"
     esac
 }
-shift
+
 # 执行主逻辑
 main ${@}
 
