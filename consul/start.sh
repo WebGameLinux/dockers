@@ -49,6 +49,11 @@ function info(){
     docker-compose ps
 }
 
+# 生成固定配置启动yml
+function create(){
+   cat ./docker-compose.yml > build/docker-compose.yml
+}
+
 # 检查 docker-compose 是否已安装
 type docker-compose >/dev/null 2>&1
 if [ "{$?}x" == "1x" ]; then
@@ -86,9 +91,12 @@ function main(){
         ps|info)
             info
         ;;
+        make|create|gen)
+            create
+        ;;
         *)
         echo "unknown opt ${opt}"
-        echo "script support options : start,stop,reload,clean,delete,restart"
+        echo "script support options : gen,start,stop,reload,clean,delete,restart"
     esac
 }
 
