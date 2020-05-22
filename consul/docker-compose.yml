@@ -8,7 +8,7 @@ services:
     env_file: envs/node1.env
     image: ${image}
     container_name: node1
-    command: agent -server ${args} -node=${node_name} -bind=${bind_address} -client=${client} -datacenter=${datacenter}
+    command: agent -server ${args} -node=node1 -bind=${bind_address} -client=${client} -datacenter=${datacenter}
     ports:
       # http
       - 18501:8500
@@ -24,7 +24,7 @@ services:
     env_file: envs/node2.env
     image: ${image}
     container_name: node2
-    command: agent -server ${args} -node=${node_name} -bind=${bind_address} -client=${client} -datacenter=${datacenter}
+    command: agent -server ${args} -node=node2 -bind=${bind_address} -client=${client} -datacenter=${datacenter}
     ports:
       # http
       - 18502:8500
@@ -42,7 +42,7 @@ services:
     env_file: envs/node3.env
     image: ${image}
     container_name: node3
-    command: agent -server ${args} -node=${node_name} -bind=${bind_address} -client=${client} -datacenter=${datacenter}
+    command: agent -server ${args} -node=node3 -bind=${bind_address} -client=${client} -datacenter=${datacenter}
     ports:
       # http
       - 18503:8500
@@ -60,7 +60,7 @@ services:
     image: ${image}
     env_file: envs/node4.env
     container_name: node4
-    command: agent -server ${args} -node=${node_name} -bind=${bind_address} -client=${client} -datacenter=${datacenter}
+    command: agent -server ${args} -node=node4 -bind=${bind_address} -client=${client} -datacenter=${datacenter}
     ports:
       # http
       - 18500:8500
