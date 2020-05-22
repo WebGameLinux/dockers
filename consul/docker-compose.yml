@@ -7,7 +7,7 @@ services:
   consul1:
     image: ${image}
     container_name: node1
-    command: agent -server ${args} -node=node1 -bind=${bind_address} -client=${client} -datacenter=${datacenter}
+    command: agent -server ${args1} -node=node1 -bind=${bind_address} -client=${client} -datacenter=${datacenter}
     ports:
       # http
       - 18501:8500
@@ -22,7 +22,7 @@ services:
   consul2:
     image: ${image}
     container_name: node2
-    command: agent -server ${args} -node=node2 -bind=${bind_address} -client=${client} -datacenter=${datacenter}
+    command: agent -server ${args2} -node=node2 -bind=${bind_address} -client=${client} -datacenter=${datacenter}
     ports:
       # http
       - 18502:8500
@@ -39,7 +39,7 @@ services:
   consul3:
     image: ${image}
     container_name: node3
-    command: agent -server ${args} -node=node3 -bind=${bind_address} -client=${client} -datacenter=${datacenter}
+    command: agent -server ${args3} -node=node3 -bind=${bind_address} -client=${client} -datacenter=${datacenter}
     ports:
       # http
       - 18503:8500
@@ -56,7 +56,7 @@ services:
   consul4:
     image: ${image}
     container_name: node4
-    command: agent -server ${args} -node=node4 -bind=${bind_address} -client=${client} -datacenter=${datacenter}
+    command: agent -server ${args4} -node=node4 -bind=${bind_address} -client=${client} -datacenter=${datacenter}
     ports:
       # http
       - 18500:8500
