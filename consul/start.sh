@@ -82,6 +82,7 @@ function main(){
         ;;
         clean|delete)
             delete
+        ;;
         ps|info)
             info
         ;;
