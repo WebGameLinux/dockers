@@ -1,20 +1,12 @@
 version: "3"
-# 环境变量
-environment:
-  datacenter: dc1
-  bind-address: 0.0.0.0
-  client: 0.0.0.0
-  image: consul
 # 网络
 networks:
   net-consul:
 
 services:
   consul1:
+    env_file: envs/node1.env
     image: ${image}
-    environment:
-      node_name: node1
-      args: -bootstrap-expect=3
     container_name: ${node_name}
     command: agent -server ${args} -node=${node_name} -bind=${bind-address} -client=${client} -datacenter=${datacenter}
     ports:
@@ -29,10 +21,8 @@ services:
       - net-consul
 
   consul2:
+    env_file: envs/node2.env
     image: ${image}
-    environment:
-      node_name: node2
-      args: -retry-join=node1
     container_name: ${node_name}
     command: agent -server ${args} -node=${node_name} -bind=${bind-address} -client=${client} -datacenter=${datacenter}
     ports:
@@ -49,10 +39,8 @@ services:
       - net-consul
 
   consul3:
+    env_file: envs/node3.env
     image: ${image}
-    environment:
-      node_name: node3
-      args: -retry-join=node1
     container_name: ${node_name}
     command: agent -server ${args} -node=${node_name} -bind=${bind-address} -client=${client} -datacenter=${datacenter}
     ports:
@@ -70,9 +58,7 @@ services:
 
   consul4:
     image: ${image}
-    environment:
-      node_name: node4
-      args: -retry-join=node1 -ui
+    env_file: envs/node4.env
     container_name: ${node_name}
     command: agent -server ${args} -node=${node_name} -bind=${bind-address} -client=${client} -datacenter=${datacenter}
     ports:

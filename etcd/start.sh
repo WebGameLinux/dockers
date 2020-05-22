@@ -50,6 +50,8 @@ if [ "{$?}x" == "1x" ]; then
 fi
 
 cd ${curDir}
+# 加载基础环境环境变量
+source ./envs/base.env
 
 # 主要逻辑
 function main(){

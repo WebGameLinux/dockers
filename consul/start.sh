@@ -54,6 +54,8 @@ fi
 
 cd ${curDir}
 
+source ./envs/base.env
+
 # 主要逻辑
 function main(){
     opt=$1

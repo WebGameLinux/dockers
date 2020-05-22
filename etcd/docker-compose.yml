@@ -1,20 +1,11 @@
 version: "3"
 networks:
   net-etcd:
-environment:
-  advertise-client-urls: http://0.0.0.0:2379
-  listen-client-urls: http://0.0.0.0:2379
-  listen-peer-urls: http://0.0.0.0:2380
-  initial-cluster: "etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380"
-  initial-cluster-token: etcd-cluster
-  initial-cluster-state: new
-  image: quay.io/coreos/etcd
 
 services:
   etcd1:
+    env_file: envs/etcd1.env
     image: ${image}
-    environment:
-      node_name: etcd1
     container_name: ${node_name}
     command: etcd -name ${node_name} -advertise-client-urls ${advertise-client-urls} -listen-client-urls ${listen-client-urls} -listen-peer-urls ${listen-peer-urls} -initial-cluster-token ${initial-cluster-token} -initial-cluster ${initial-cluster} -initial-cluster-state ${initial-cluster-state}
     ports:
@@ -27,9 +18,8 @@ services:
       - net-etcd
 
   etcd2:
+    env_file: envs/etcd2.env
     image: ${image}
-    environment:
-      node_name: etcd2
     container_name: ${node_name}
     command: etcd -name ${node_name} -advertise-client-urls ${advertise-client-urls} -listen-client-urls ${listen-client-urls} -listen-peer-urls ${listen-peer-urls} -initial-cluster-token ${initial-cluster-token} -initial-cluster ${initial-cluster} -initial-cluster-state ${initial-cluster-state}
     ports:
@@ -42,9 +32,8 @@ services:
       - net-etcd
 
   etcd3:
+    env_file: envs/etcd3.env
     image: ${image}
-    environment:
-      node_name: etcd3
     container_name: ${node_name}
     command: etcd -name ${node_name} -advertise-client-urls ${advertise-client-urls} -listen-client-urls ${listen-client-urls} -listen-peer-urls ${listen-peer-urls} -initial-cluster-token ${initial-cluster-token} -initial-cluster ${initial-cluster} -initial-cluster-state ${initial-cluster-state}
     ports:
