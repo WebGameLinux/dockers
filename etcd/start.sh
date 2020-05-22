@@ -4,13 +4,13 @@ curDir=$(cd `dirname $0`; pwd)
 
 # 初始化持久化目录
 function initDataDir(){
-    if [ -e /data/ectd1 ];then
+    if [ ! -e /data/ectd1 ];then
         mkdir -p /data/etcd1
     fi
-    if [ -e /data/ectd2 ];then
+    if [ ! -e /data/ectd2 ];then
         mkdir -p /data/etcd2
     fi
-    if [ -e /data/ectd3 ];then
+    if [ ! -e /data/ectd3 ];then
         mkdir -p /data/etcd3
     fi
 }

@@ -4,17 +4,17 @@ curDir=$(cd `dirname $0`; pwd)
 
 # 初始化持久化目录
 function initDataDir(){
-    if [ -e /data/consul/node1 ];then
+    if [ ! -e /data/consul/node1 ];then
         echo 123
         mkdir -p  /data/consul/node1
     fi
-    if [ -e  /data/consul/node2 ];then
+    if [ ! -e  /data/consul/node2 ];then
         mkdir -p  /data/consul/node2
     fi
-    if [ -e  /data/consul/node3 ];then
+    if [ ! -e  /data/consul/node3 ];then
         mkdir -p  /data/consul/node3
     fi
-    if [ -e  /data/consul/node4 ];then
+    if [ ! -e  /data/consul/node4 ];then
         mkdir -p  /data/consul/node4
     fi
 }

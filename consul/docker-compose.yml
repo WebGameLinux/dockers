@@ -5,7 +5,6 @@ networks:
 
 services:
   consul1:
-    env_file: envs/node1.env
     image: ${image}
     container_name: node1
     command: agent -server ${args} -node=node1 -bind=${bind_address} -client=${client} -datacenter=${datacenter}
@@ -21,7 +20,6 @@ services:
       - net-consul
 
   consul2:
-    env_file: envs/node2.env
     image: ${image}
     container_name: node2
     command: agent -server ${args} -node=node2 -bind=${bind_address} -client=${client} -datacenter=${datacenter}
@@ -39,7 +37,6 @@ services:
       - net-consul
 
   consul3:
-    env_file: envs/node3.env
     image: ${image}
     container_name: node3
     command: agent -server ${args} -node=node3 -bind=${bind_address} -client=${client} -datacenter=${datacenter}
@@ -58,7 +55,6 @@ services:
 
   consul4:
     image: ${image}
-    env_file: envs/node4.env
     container_name: node4
     command: agent -server ${args} -node=node4 -bind=${bind_address} -client=${client} -datacenter=${datacenter}
     ports:
