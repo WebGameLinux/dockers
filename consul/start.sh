@@ -84,10 +84,9 @@ function main(){
         echo "script support options : start,stop,reload,clean,delete,restart"
     esac
 }
-
-initDataDir
+shift
 # 执行主逻辑
-# main ${@}
+main ${@}
 
 # 回到原目录
 cd -

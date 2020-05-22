@@ -81,6 +81,7 @@ function main(){
     esac
 }
 
+shift
 # 执行主逻辑
 main ${@}
 
