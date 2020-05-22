@@ -7,7 +7,7 @@ services:
   consul1:
     env_file: envs/node1.env
     image: ${image}
-    container_name: ${node_name}
+    container_name: node1
     command: agent -server ${args} -node=${node_name} -bind=${bind_address} -client=${client} -datacenter=${datacenter}
     ports:
       # http
@@ -15,7 +15,7 @@ services:
       # rpc
       - 18301:8300
     volumes:
-      - /data/consul/${node_name}:/consul/data
+      - /data/consul/node1:/consul/data
     restart: on-failure
     networks:
       - net-consul
@@ -23,7 +23,7 @@ services:
   consul2:
     env_file: envs/node2.env
     image: ${image}
-    container_name: ${node_name}
+    container_name: node2
     command: agent -server ${args} -node=${node_name} -bind=${bind_address} -client=${client} -datacenter=${datacenter}
     ports:
       # http
@@ -31,7 +31,7 @@ services:
       # rpc
       - 18302:8300
     volumes:
-      - /data/consul/${node_name}:/consul/data
+      - /data/consul/node2:/consul/data
     restart: on-failure
     depends_on:
       - consul1
@@ -41,7 +41,7 @@ services:
   consul3:
     env_file: envs/node3.env
     image: ${image}
-    container_name: ${node_name}
+    container_name: node3
     command: agent -server ${args} -node=${node_name} -bind=${bind_address} -client=${client} -datacenter=${datacenter}
     ports:
       # http
@@ -49,7 +49,7 @@ services:
       # rpc
       - 18303:8300
     volumes:
-      - /data/consul/${node_name}:/consul/data
+      - /data/consul/node3:/consul/data
     restart: on-failure
     depends_on:
       - consul1
@@ -59,7 +59,7 @@ services:
   consul4:
     image: ${image}
     env_file: envs/node4.env
-    container_name: ${node_name}
+    container_name: node4
     command: agent -server ${args} -node=${node_name} -bind=${bind_address} -client=${client} -datacenter=${datacenter}
     ports:
       # http
@@ -67,7 +67,7 @@ services:
       # rpc
       - 18300:8300
     volumes:
-      - /data/consul/${node_name}:/consul/data
+      - /data/consul/node4:/consul/data
     restart: on-failure
     depends_on:
       - consul2
