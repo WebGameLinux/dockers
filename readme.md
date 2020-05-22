@@ -42,8 +42,8 @@
 - [ ] elasticsearch
 - [ ] kibana
 - [ ] logstash
-- [ ] etcd
-- [ ] consul
+- [x] etcd
+- [x] consul
 - [ ] postgresSQL
 - [ ] nacos
 - [ ] eureka
