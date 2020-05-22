@@ -67,6 +67,10 @@ etcd kv 存储服务, 可以用于分布存储(分布式锁,配置中心)
 
 阿里开发的 一个更易于构建云原生应用的动态服务发现、配置管理和服务管理平台。(java)
 
+## [Nginx](https://github.com/nginx/nginx)
+
+优秀 web 代理服务 , 负载均衡 服务器 (c)
+
 ## [Eureka](https://github.com/Netflix/eureka)
 
 微服务 服务注册中心 (java)
@@ -79,6 +83,10 @@ service mesh (下一代微服务架构:服务网格)服务套件 需要与 k8s �
 
 Kubernetes 是 google 内部研发的 docker 编排、服务管理 系统 (go)
 
+## [Rancher](https://github.com/rancher/rancher.git)
+
+Rancher 是一个开源项目，为为在生产中部署容器的组织提供了一个容器管理平台。Rancher 使在任何地方轻松运行 Kubernetes，满足 IT 要求并增强 DevOps 团队的能力变得容易。
+
 ## [Grafana](https://github.com/grafana/grafana.git)
 
 用于 Graphite，InfluxDB 和 Prometheus 等的精美监视和指标分析和仪表板的工具
@@ -86,6 +94,61 @@ Kubernetes 是 google 内部研发的 docker 编排、服务管理 系统 (go)
 ## [Influxdb](https://github.com/influxdata/influxdb)
 
 InfluxDB 是一个开源时间序列平台。这包括用于存储和查询数据，在后台处理数据以实现 ETL 或监视和警报目的的 API，用户仪表板以及可视化和探索数据的 API 等。现在，此仓库中的 master 分支代表最新的 InfluxDB，该数据库现在在单个二进制文件中包含针对 Kapacitor（后台处理）和 Chronograf（UI）的功能。(golang)
+
+## [Hadoop](https://github.com/apache/hadoop)
+
+大数据 数据仓库 (java)
+
+## [Kafka](https://github.com/apache/kafka)
+
+消息 队列 (java)
+
+## [Tomcat](https://github.com/apache/tomcat)
+
+Java Web 服务器 (java)
+
+## [Jenkins](https://github.com/jenkinsci/jenkins)
+
+项目持续集成 系统 (java)
+
+## [Drone](https://github.com/drone/drone)
+
+Drone 是现代化的持续集成和持续交付平台，可让繁忙的团队自动化其构建，测试和发布工作流程。
+利用 Drone 的团队可以更频繁地发布软件，并且漏洞更少 (golang)
+
+## [Gogs](https://github.com/gogs/gogs)
+
+Gogs 是一款极易搭建的自助 Git 服务。(golang)
+
+## [GitLab](https://github.com/gitlabhq/gitlabhq)
+
+GitLab 社区版（CE）Git 服务 (Ruby）
+
+## [Fabric8](https://github.com/fabric8io/fabric8-platform.git)
+
+fabric8 可以很容易地创建微服务，构建，测试和部署通过他们的连续式输送管道，然后运行和管理他们与持续改进和 ChatOps (golang)
+
+## [Zabbix](https://github.com/zabbix/zabbix)
+
+zabbix 实时监视 IT 组件和服务，例如网络，服务器，VM，应用程序和云 的监控系统
+
+## [Gocron](https://github.com/ouqiang/gocron.git)
+
+gocron 跨平台-定时任务管理系统 (golang)
+
+## [PPGo_Job](https://github.com/george518/PPGo_Job.git)
+
+PPGO_Job 是一款可视化的、多人多权限的、一任务多机执行的定时任务管理系统
+
+采用 golang 开发，安装方便，资源消耗少，支持大并发，可同时管理多台服务器上的定时任务。
+
+## [MareWood](https://github.com/xusenlin/MareWood)
+
+一个 Go 开发的轻量级前端部署工具 (golang)
+
+## [CanDao](http://www.zentao.net/)
+
+禅道 一款项目管理,任务发布,bug 跟踪...系统 (php)
 
 ## Todo
 
@@ -104,8 +167,22 @@ InfluxDB 是一个开源时间序列平台。这包括用于存储和查询数�
 - [x] Consul
 - [ ] PostgresSQL
 - [ ] Nacos
+- [ ] Nginx
 - [ ] Eureka
 - [ ] Istio
 - [ ] K8s
+- [ ] Rancher
 - [ ] Grafana
 - [ ] InfluxDB
+- [ ] Hadoop
+- [ ] Kafka
+- [ ] Tomcat
+- [ ] Jenkins
+- [ ] Drone
+- [ ] Gogs
+- [ ] GitLab
+- [ ] Fabric8
+- [ ] Zabbix
+- [ ] Gocron
+- [ ] PPGo_Job
+- [ ] MareWood
