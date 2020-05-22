@@ -51,7 +51,8 @@ function info(){
 
 # 生成固定配置启动yml
 function create(){
-   cat ./docker-compose.yml > ./build/docker-compose.yml
+   ./build.py
+   echo "生成docker-compose.yml文件成功,请查看build文件夹"
 }
 
 # 检查 docker-compose 是否已安装
