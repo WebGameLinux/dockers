@@ -5,7 +5,7 @@ curDir=$(cd `dirname $0`; pwd)
 # 初始化持久化目录
 function initDataDir(){
     if [ -e /data/consul/node1 ];then
-       exit
+        echo 123
         mkdir -p  /data/consul/node1
     fi
     if [ -e  /data/consul/node2 ];then
@@ -80,13 +80,14 @@ function main(){
             delete
         ;;
         *)
-        echo "unknown opt ${$opt}"
+        echo "unknown opt ${opt}"
         echo "script support options : start,stop,reload,clean,delete,restart"
     esac
 }
 
+initDataDir
 # 执行主逻辑
-main ${@}
+# main ${@}
 
 # 回到原目录
 cd -

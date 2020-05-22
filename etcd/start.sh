@@ -5,7 +5,6 @@ curDir=$(cd `dirname $0`; pwd)
 # 初始化持久化目录
 function initDataDir(){
     if [ -e /data/ectd1 ];then
-       exit
         mkdir -p /data/etcd1
     fi
     if [ -e /data/ectd2 ];then
@@ -77,7 +76,7 @@ function main(){
             delete
         ;;
         *)
-        echo "unknown opt ${$opt}"
+        echo "unknown opt ${opt}"
         echo "script support options : start,stop,reload,clean,delete,restart"
     esac
 }
