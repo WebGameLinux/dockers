@@ -1,6 +1,6 @@
 # [Apollo 配置中服务](https://github.com/ctripcorp/apollo)
 
-阿里开源的 配置中方心解决方案
+携程开源的 配置中方心解决方案
 
 启动目录必须带上 sql 目录
 

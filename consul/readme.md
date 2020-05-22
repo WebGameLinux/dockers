@@ -10,9 +10,12 @@ Consul 是一个服务网格（微服务间的 TCP/IP，负责服务之间的网
 bash 命令行
 
 ```bash
-./start.sh start   # 启动
-./start.sh stop    # 关闭
-./start.sh restart # 重启
+ ./start.sh          # 运行脚本 启动集群
+ ./start.sh gen     # 生产固定配置信息的docker-compose.yml 文件到build 目录中
+ ./start.sh info    # 查看集群运行状态
+ ./start.sh stop    # 停止集群
+ ./start.sh reload  # 集群热重重启
+ ./start.sh restart # 集群重启
 ```
 
 默认 docker-compose.yml 启动 4 个(官网推荐个数) consul 节点 一主多从, restart 策略 :on-failure

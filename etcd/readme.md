@@ -11,5 +11,10 @@ hub.docker.com 中的 etcd 官方镜像(elcolio/etcd
 第一次启动请使用 : `start.sh`
 
 ```bash
- ./start.sh #运行脚本
+ ./start.sh          # 运行脚本 启动集群
+ ./start.sh gen     # 生产固定配置信息的docker-compose.yml 文件到build 目录中
+ ./start.sh info    # 查看集群运行状态
+ ./start.sh stop    # 停止集群
+ ./start.sh reload  # 集群热重重启
+ ./start.sh restart # 集群重启
 ```
