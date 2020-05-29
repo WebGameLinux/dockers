@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  showDoc:
+    image: star7th/showdoc
+    container_name: showDoc
+    ports:
+      - ${html_service_port}:80
+    volumes:
+      - ${html_dir}:/var/www/html/
+    restart: always
+    user: ${user_name}
+    privileged: true

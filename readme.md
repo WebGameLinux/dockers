@@ -150,6 +150,10 @@ PPGO_Job 是一款可视化的、多人多权限的、一任务多机执行的�
 
 禅道 一款项目管理,任务发布,bug 跟踪...系统 (php)
 
+## [ShowDoc](https://github.com/star7th/showdoc) 
+
+开源的 项目文档(api文档,数据字典)管理工具(开源) (php)
+
 ## Todo
 
 成仙计划集成
@@ -186,3 +190,4 @@ PPGO_Job 是一款可视化的、多人多权限的、一任务多机执行的�
 - [ ] Gocron
 - [ ] PPGo_Job
 - [ ] MareWood
+- [x] showDoc
