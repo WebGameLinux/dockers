@@ -9,7 +9,7 @@ function initDataDir(){
     fi
     #新建存放showdoc数据的目录
     if [ ! -e ${html_dir} ];then
-        mdkir -p ${html_dir}
+        mkdir -p ${html_dir}
         chmod  -R 777 `dirname ${html_dir}`
     fi
 }
