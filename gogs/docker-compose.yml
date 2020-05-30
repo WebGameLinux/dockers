@@ -12,5 +12,4 @@ services:
     volumes:
       - ${data_dir}:/data
       - ${config_dir}:/backup
-    user: ${user}
     restart: "always"
