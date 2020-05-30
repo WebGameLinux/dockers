@@ -12,4 +12,5 @@ services:
     volumes:
       - ${data_dir}:/data
       - ${config_dir}:/backup
+      - ${user_home}:/home/git
     restart: "always"
