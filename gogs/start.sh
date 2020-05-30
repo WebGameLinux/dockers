@@ -211,7 +211,7 @@ function main(){
            create
         ;;
         *|help)
-        echo "script support options : gen,start,ssh,stop,sshTest,reload,clean,delete,restart"
+        echo "script support options : gen,start,ssh,stop,ssh-test,reload,clean,delete,restart"
     esac
 }
 
