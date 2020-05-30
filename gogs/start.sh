@@ -94,7 +94,7 @@ Host ${gogs_user}
     User ${user}
     Port ${ssh_port}
     IdentitiesOnly yes
-    IdentityFile /home/git/.ssh/id_rsa
+    IdentityFile /home/${user}/.ssh/id_rsa
 END
     fi
 }
