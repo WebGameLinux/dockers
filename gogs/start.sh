@@ -24,6 +24,53 @@ function initDataDir(){
     fi
 }
 
+# 初始化git用户
+function initUser(){
+    if [ "${user}x" == "x" ];then
+        return
+    fi
+    if [ "${user_group}x" == "x" ];then
+        export user_group=1000
+    fi
+    id $user >& /dev/null
+    if [ $? -ne 0 ];then
+        adduser  ${user} -u ${user_group}
+    fi
+    ## 初始化
+    if [ ! -e "/home/${user}/.ssh" ];then
+        ln -s ${data_dir}/gogs/git/.ssh  /home/${user}/.ssh
+    fi
+}
+
+## 启动ssh服务
+function initSsh(){
+    ## 创建gogs
+    if [ ! -e /app/gogs/ ];then
+        mkdir -p /app/gogs/
+        cat >/app/gogs/gogs <<END
+#!/bin/sh
+ssh -p ${ssh_port} -o StrictHostKeyChecking=no git@127.0.0.1 -p ${system_ssh_port} \
+"SSH_ORIGINAL_COMMAND=\"\$SSH_ORIGINAL_COMMAND\" \$0 \$@"
+END
+        chmod 755 /app/gogs/gogs
+        /app/gogs/gogs &
+    fi
+    ## 检查ssh 共享
+    check=`ps -ef|grep "/app/gogs/gogs"|grep -v grep|grep -v git`
+    if [ "${check}" == "" ];then
+        /app/gogs/gogs &
+    fi
+}
+
+## stop ssh
+function stopSsh(){
+    check=`ps -ef|grep "/app/gogs/gogs"|grep -v grep|grep -v git`
+    if [ "${check}" == "" ];then
+        return
+    fi
+    echo ${check}| awk '{print $2}' | xargs kill -9
+}
+
 # 启动
 function start(){
     docker-compose up -d
@@ -82,9 +129,16 @@ function main(){
         start)
             initDataDir
             start
+            initUser
+            initSsh
         ;;
         restart)
             restart
+            stopSsh
+        ;;
+        ssh)
+          initUser
+          initSsh
         ;;
         stop)
             stop
@@ -102,7 +156,7 @@ function main(){
            create
         ;;
         *|help)
-        echo "script support options : gen,start,stop,reload,clean,delete,restart"
+        echo "script support options : gen,start,ssh,stop,reload,clean,delete,restart"
     esac
 }
 
