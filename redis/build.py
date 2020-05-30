@@ -18,8 +18,8 @@ if __name__ == "__main__":
     args = sys.argv
     argc = len(args)
     scope = args[0]
-    file = './'.join(scope).join('/docker-compose.yml')
-    reader = open(file, 'r')
+    ymlFile = './'.join(scope).join('/docker-compose.yml')
+    reader = open(ymlFile, 'r')
     content = reader.read()
     m = re.subn(envVar, replaceEnvVars, content)
     reader.close()
