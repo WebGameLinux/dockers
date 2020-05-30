@@ -15,8 +15,8 @@
 ```bash
  ./start.sh         # 运行脚本 启动服务
  ./start.sh gen     # 生产固定配置信息的docker-compose.yml 文件到build 目录中
- ./start.sh info    # 查看集群运行状态
- ./start.sh stop    # 停止集群
- ./start.sh reload  # 集群热重重启
- ./start.sh restart # 集群重启
+ ./start.sh info    # 查看服务运行状态
+ ./start.sh stop    # 停止服务
+ ./start.sh reload  # 服务热重重启
+ ./start.sh restart # 服务重启
 ```
