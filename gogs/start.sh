@@ -102,7 +102,17 @@ END
 # 测试 ssh
 function sshTest(){
     initSshConf
-    ssh -T ${gogs_user} -f ${curDir}/config/config
+    ssh -T ${gogs_user} -F ${curDir}/config/config 2&>1
+    if [ ! -e "./1" ];then
+        return
+    fi
+    ok=`cat ./1|grep "Authentication succeeded"`
+    if [ "${ok}x" == "x" ];then
+        echo "ssh test succeeded"
+    else
+        echo "ssh failed"
+    fi
+    rm -f ./1
 }
 
 ## stop ssh
