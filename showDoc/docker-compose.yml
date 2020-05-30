@@ -5,7 +5,9 @@ services:
     image: star7th/showdoc
     container_name: showDoc
     ports:
-      - ${html_service_port}:80
+      - ${http_service_port}:80
+      - ${https_service_port}:443
+      - ${ldap_service_port}:9000
     volumes:
       - ${html_dir}:/var/www/html/
     restart: always

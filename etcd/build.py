@@ -14,9 +14,10 @@ def replaceEnvVars(matched):
 
 if __name__ == "__main__":
     envVar = r'(\$\{([^\$\{\}]+)\})'
-    fs = open('./docker-compose.yml', 'r')
-    content = fs.read()
+    reader = open('./docker-compose.yml', 'r')
+    content = reader.read()
     m = re.subn(envVar, replaceEnvVars, content)
-    fs.close()
-    fs1 = open("./build/docker-compose.yml", "w+")
-    fs1.write(m[0].__str__())
+    reader.close()
+    writer = open("./build/docker-compose.yml", "w+")
+    writer.write(m[0].__str__())
+    writer.close()

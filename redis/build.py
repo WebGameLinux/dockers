@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import re
 import os
+import sys
 
 
 def replaceEnvVars(matched):
@@ -14,10 +15,15 @@ def replaceEnvVars(matched):
 
 if __name__ == "__main__":
     envVar = r'(\$\{([^\$\{\}]+)\})'
-    reader = open('./docker-compose.yml', 'r')
+    args = sys.argv
+    argc = len(args)
+    scope = args[0]
+    file = './'.join(scope).join('/docker-compose.yml')
+    reader = open(file, 'r')
     content = reader.read()
     m = re.subn(envVar, replaceEnvVars, content)
     reader.close()
-    writer = open("./build/docker-compose.yml", "w+")
+    saveFile = './'.join(scope).join('/build/docker-compose.yml')
+    writer = open(saveFile, "w+")
     writer.write(m[0].__str__())
     writer.close()
