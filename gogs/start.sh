@@ -9,8 +9,8 @@ function initDataDir(){
     fi
     # 新建存放数据的目录
     if [ ! -e ${data_dir} ];then
-        mkdir -p ${html_dir}
-        chmod  -R 777 ${html_dir}
+        mkdir -p ${data_dir}
+        chmod  -R 777 ${data_dir}
     fi
     # 新建备份数据的目录
     if [ ! -e ${backup_dir} ];then
