@@ -1,0 +1,16 @@
+version: "3"
+services:
+  gogs:
+    image: ${image}
+    container_name: ${container_name}
+    cpu_count: 2
+    mem_limit: 1024m
+    ports:
+      - ${http_service_port}:3000
+      - ${ssh_service_port}:22
+    volumes:
+      - ${data_dir}:/data
+      - ${config_dir}:/backup
+      - ${user_home}:/home/git
+    user: ${user}
+    restart: always

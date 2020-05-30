@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  vscode:
+    image: ${image}
+    container_name: ${container_name}
+    volumes:
+      - ${data_dir}:/home/coder/project
+    user:
+      - ${userName}:${groupId}
+    ports:
+      - ${server_port}:8080
+    privileged: true
+    cpu_count: 2
+    mem_limit: 2048m

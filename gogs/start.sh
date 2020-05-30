@@ -4,13 +4,23 @@ curDir=$(cd `dirname $0`; pwd)
 
 # 初始化持久化目录
 function initDataDir(){
-    if [ "${save_dir}x" == "x" ];then
+    if [ "${data_dir}x" == "x" ];then
         return
     fi
-    #新建存放数据的目录
-    if [ ! -e ${save_dir} ];then
-        mkdir -p ${save_dir}
-        chmod  -R 777 ${save_dir}
+    # 新建存放数据的目录
+    if [ ! -e ${data_dir} ];then
+        mkdir -p ${html_dir}
+        chmod  -R 777 ${html_dir}
+    fi
+    # 新建备份数据的目录
+    if [ ! -e ${backup_dir} ];then
+        mkdir -p ${backup_dir}
+        chmod  -R 777  ${backup_dir}
+    fi
+    # 新建用户家目录
+    if [ ! -e ${user_home} ];then
+        mkdir -p ${user_home}
+        chmod  -R 777  ${user_home}
     fi
 }
 

@@ -150,9 +150,13 @@ PPGO_Job 是一款可视化的、多人多权限的、一任务多机执行的�
 
 禅道 一款项目管理,任务发布,bug 跟踪...系统 (php)
 
-## [ShowDoc](https://github.com/star7th/showdoc) 
+## [ShowDoc](https://github.com/star7th/showdoc)
 
-开源的 项目文档(api文档,数据字典)管理工具(开源) (php)
+开源的 项目文档(api 文档,数据字典)管理工具(开源) (php)
+
+## [CodeServer](https://github.com/cdr/code-server)
+
+在任何地方的任何计算机上运行 VS Code，然后在浏览器中对其进行访问-开源项目 (typescript)
 
 ## Todo
 
@@ -183,7 +187,7 @@ PPGO_Job 是一款可视化的、多人多权限的、一任务多机执行的�
 - [ ] Tomcat
 - [ ] Jenkins
 - [ ] Drone
-- [ ] Gogs
+- [x] Gogs
 - [ ] GitLab
 - [ ] Fabric8
 - [ ] Zabbix
@@ -191,3 +195,4 @@ PPGO_Job 是一款可视化的、多人多权限的、一任务多机执行的�
 - [ ] PPGo_Job
 - [ ] MareWood
 - [x] showDoc
+- [x] CodeServer

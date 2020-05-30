@@ -4,13 +4,13 @@ curDir=$(cd `dirname $0`; pwd)
 
 # 初始化持久化目录
 function initDataDir(){
-    if [ "${save_dir}x" == "x" ];then
+    if [ "${data_dir}x" == "x" ];then
         return
     fi
-    #新建存放数据的目录
-    if [ ! -e ${save_dir} ];then
-        mkdir -p ${save_dir}
-        chmod  -R 777 ${save_dir}
+    #新建存放vscode数据的目录
+    if [ ! -e ${data_dir} ];then
+        mkdir -p ${data_dir}
+        chmod  -R 777 ${data_dir}
     fi
 }
 
