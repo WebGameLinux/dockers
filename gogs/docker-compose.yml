@@ -14,3 +14,4 @@ services:
       - ${config_dir}:/backup
       - ${user_home}:/home/git
     restart: "always"
+    privileged: true
