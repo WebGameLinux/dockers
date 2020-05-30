@@ -77,8 +77,32 @@ END
     ## 检查ssh 共享
     check=`ps -ef|grep "/app/gogs/gogs"|grep -v grep|grep -v git`
     if [ "${check}" == "" ];then
-        /app/gogs/gogs &
+        sshTest
     fi
+}
+
+## 创建 ssh 测试配置
+function initSshConf(){
+    if [ ! -e ${curDir}/config/ ];then
+      mkdir -p ${curDir}/config
+    fi
+    ## 创建gogs
+    if [ ! -e ${curDir}/config/config ];then
+        cat >${curDir}/config/config <<END
+Host ${gogs_user}
+    HostName 127.0.0.1
+    User ${user}
+    Port ${ssh_port}
+    IdentitiesOnly yes
+    IdentityFile /home/git/.ssh/id_rsa
+END
+    fi
+}
+
+# 测试 ssh
+function sshTest(){
+    initSshConf
+    ssh -T ${gogs_user} -f ${curDir}/config/config
 }
 
 ## stop ssh
@@ -153,11 +177,13 @@ function main(){
         ;;
         restart)
             restart
-            stopSsh
         ;;
         ssh)
           initUser
           initSsh
+        ;;
+        ssh-test)
+          sshTest
         ;;
         stop)
             stop
@@ -175,7 +201,7 @@ function main(){
            create
         ;;
         *|help)
-        echo "script support options : gen,start,ssh,stop,reload,clean,delete,restart"
+        echo "script support options : gen,start,ssh,stop,sshTest,reload,clean,delete,restart"
     esac
 }
 
