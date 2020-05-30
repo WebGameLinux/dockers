@@ -19,5 +19,4 @@
  ./start.sh stop    # 停止集群
  ./start.sh reload  # 集群热重重启
  ./start.sh restart # 集群重启
-
 ```
