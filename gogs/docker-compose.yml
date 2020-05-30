@@ -3,8 +3,9 @@ services:
   gogs:
     image: ${image}
     container_name: ${container_name}
-    cpu_count: 2
-    mem_limit: 1024m
+    #compose >=1.19.1
+    #cpu_count: 2
+    #mem_limit: 1024m
     ports:
       - ${http_service_port}:3000
       - ${ssh_service_port}:22
