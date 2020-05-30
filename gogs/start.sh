@@ -39,6 +39,17 @@ function initUser(){
     ## 初始化
     if [ ! -e "/home/${user}/.ssh" ];then
         ln -s ${data_dir}/gogs/git/.ssh  /home/${user}/.ssh
+        ## 非交互
+        ssh-keygen -t rsa -b 4096 -f /home/${user}/.ssh/id_rsa  -P ""
+        pub=`cat /home/${user}/.ssh/id_rsa.pub`
+        auth="/home/${user}/.ssh/authorized_keys"
+        old=""
+        if [ -e "${auth}" ];then
+            old=`cat ${auth}`
+        fi
+        ## 追加到头部
+        echo "command=\"/app/gogs/gogs serv key-1 --config='/data/gogs/conf/app.ini'\",no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ${pub}\n${old}" \
+        > ${auth}
     fi
 }
 
@@ -48,9 +59,17 @@ function initSsh(){
     if [ ! -e /app/gogs/ ];then
         mkdir -p /app/gogs/
         cat >/app/gogs/gogs <<END
-#!/bin/sh
+#!/bin/bash
+GIT_KEY_ID=\$(cat /home/git/.ssh/id_rsa.pub | awk '{ print $3 }')
+if ! grep -q "no-port.*\$GIT_KEY_ID" /home/git/.ssh/authorized_keys
+then
+    echo \
+    "no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty" \
+    "\$(cat /home/git/.ssh/id_rsa.pub)" \
+    >> /home/git/.ssh/authorized_keys
+fi
 ssh -p ${ssh_port} -o StrictHostKeyChecking=no git@127.0.0.1 -p ${system_ssh_port} \
-"SSH_ORIGINAL_COMMAND=\"\$SSH_ORIGINAL_COMMAND\" \$0 \$@"
+    SSH_ORIGINAL_COMMAND=\$(printf '%q' "\$SSH_ORIGINAL_COMMAND") "\$0" "\$@"
 END
         chmod 755 /app/gogs/gogs
         /app/gogs/gogs &
