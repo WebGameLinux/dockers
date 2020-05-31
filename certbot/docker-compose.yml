@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  certbot:
+    image: ${image}
+    container_name: ${container_name}
+    ports:
+      - ${http_port}:80
+      - ${https_port}:443
+    volumes:
+      - ${etc_dir}:/etc/letsencrypt
+      - ${lib_dir}:/var/lib/letsencrypt
+    restart: "always"
