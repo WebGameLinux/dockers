@@ -11,4 +11,4 @@ services:
       - ${etc_dir}:/etc/letsencrypt
       - ${lib_dir}:/var/lib/letsencrypt
     restart: "always"
-    command: ${command}
+    entrypoint: ${command}
